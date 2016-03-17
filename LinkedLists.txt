@@ -1,0 +1,84 @@
+LINKED LIST: elements are called nodes
+
+Each node is structured with two elements, an integer, and a pointer containing the address of the next node,
+linking the two.The last node's pointer points to nowhere. For the first node, a new int (int* head) pointer is 
+initialized to point to the first node's address.
+
+
+__________________________________________________
+--------------------------------------------------
+
+
+struct node
+{
+	int score;
+	node* next;
+};
+
+//To allocate: create empty list, allocate nodes for the list one by one
+
+node* head = NULL;
+
+//Dynamically allocate a node
+
+node* current;
+current = new node;
+
+//Input data into the node
+
+current->score = 85;
+//or
+cout<<"enter a score: ";
+cin>>current->score;       //The arrow is the same as a  .  but it's an arrow because of the pointer ex: mylist[i].score  and  current->score
+
+//Put the node, current, into head
+
+head = current;
+
+//Make head's pointer element point to NULL
+
+current->next = NULL;
+
+//Create another node at the front of the list
+
+current = new node;
+cin>>current->score;
+
+current->next = head;
+head = current;
+
+//and another...
+
+current = new node;
+cin>>current->score;
+
+current->next = head;
+head = current;
+
+
+_________________________________________________
+-------------------------------------------------
+
+
+//create a looping statement to create nodes
+
+int length = 0;
+cout<<"how many nodes would you like to create?";
+cin>>length;
+node* newnode;
+for(int i = 0; i < length; i++){
+	newnode = new node;
+	cout<<"enter a score: ";
+	cin>>newnode->score;
+	newnode->next = head;
+	head = newnode;
+}
+
+//Display the content of the linked list (different "current")
+
+node* current = head;
+while(current != NULL){
+	cout<<current->score<<endl;
+	current = current->next;
+}
+
